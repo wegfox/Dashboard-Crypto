@@ -49,28 +49,28 @@ interface IndicatorData extends KlineData {
 // --- Constants ---
 
 const SYMBOLS = [
-  { label: 'BTC/USDT', value: 'BTCUSDT', support: 60000, resistance: 75000 },
-  { label: 'ETH/USDT', value: 'ETHUSDT', support: 3000, resistance: 4000 },
-  { label: 'BNB/USDT', value: 'BNBUSDT', support: 500, resistance: 650 },
-  { label: 'SOL/USDT', value: 'SOLUSDT', support: 120, resistance: 200 },
-  { label: 'XRP/USDT', value: 'XRPUSDT', support: 0.45, resistance: 0.65 },
-  { label: 'ADA/USDT', value: 'ADAUSDT', support: 0.35, resistance: 0.55 },
-  { label: 'DOGE/USDT', value: 'DOGEUSDT', support: 0.12, resistance: 0.22 },
-  { label: 'AVAX/USDT', value: 'AVAXUSDT', support: 30, resistance: 50 },
-  { label: 'DOT/USDT', value: 'DOTUSDT', support: 6, resistance: 10 },
-  { label: 'LINK/USDT', value: 'LINKUSDT', support: 12, resistance: 20 },
-  { label: 'TRX/USDT', value: 'TRXUSDT', support: 0.10, resistance: 0.15 },
-  { label: 'POL/USDT', value: 'POLUSDT', support: 0.30, resistance: 0.60 },
-  { label: 'BCH/USDT', value: 'BCHUSDT', support: 400, resistance: 600 },
-  { label: 'NEAR/USDT', value: 'NEARUSDT', support: 1.17, resistance: 1.34 },
-  { label: 'LTC/USDT', value: 'LTCUSDT', support: 70, resistance: 100 },
-  { label: 'UNI/USDT', value: 'UNIUSDT', support: 7, resistance: 12 },
-  { label: 'APT/USDT', value: 'APTUSDT', support: 8, resistance: 15 },
-  { label: 'SUI/USDT', value: 'SUIUSDT', support: 1.00, resistance: 2.00 },
-  { label: 'ICP/USDT', value: 'ICPUSDT', support: 10, resistance: 18 },
-  { label: 'HBAR/USDT', value: 'HBARUSDT', support: 0.07, resistance: 0.12 },
-  { label: 'ATOM/USDT', value: 'ATOMUSDT', support: 8, resistance: 12 },
-  { label: 'TIA/USDT', value: 'TIAUSDT', support: 10, resistance: 18 },
+  { label: 'BTC/USDT', value: 'BTCUSDT' },
+  { label: 'ETH/USDT', value: 'ETHUSDT' },
+  { label: 'BNB/USDT', value: 'BNBUSDT' },
+  { label: 'SOL/USDT', value: 'SOLUSDT' },
+  { label: 'XRP/USDT', value: 'XRPUSDT' },
+  { label: 'ADA/USDT', value: 'ADAUSDT' },
+  { label: 'DOGE/USDT', value: 'DOGEUSDT' },
+  { label: 'AVAX/USDT', value: 'AVAXUSDT' },
+  { label: 'DOT/USDT', value: 'DOTUSDT' },
+  { label: 'LINK/USDT', value: 'LINKUSDT' },
+  { label: 'TRX/USDT', value: 'TRXUSDT' },
+  { label: 'POL/USDT', value: 'POLUSDT' },
+  { label: 'BCH/USDT', value: 'BCHUSDT' },
+  { label: 'NEAR/USDT', value: 'NEARUSDT' },
+  { label: 'LTC/USDT', value: 'LTCUSDT' },
+  { label: 'UNI/USDT', value: 'UNIUSDT' },
+  { label: 'APT/USDT', value: 'APTUSDT' },
+  { label: 'SUI/USDT', value: 'SUIUSDT' },
+  { label: 'ICP/USDT', value: 'ICPUSDT' },
+  { label: 'HBAR/USDT', value: 'HBARUSDT' },
+  { label: 'ATOM/USDT', value: 'ATOMUSDT' },
+  { label: 'TIA/USDT', value: 'TIAUSDT' },
 ];
 
 const RSI_PERIOD = 14;
@@ -413,24 +413,6 @@ export default function TradingDashboard() {
     const bbLowerSeries = mainChart.addSeries(LineSeries, { color: 'rgba(255, 255, 255, 0.2)', lineWidth: 1, lineStyle: 2, priceScaleId: 'right' });
     const bbMiddleSeries = mainChart.addSeries(LineSeries, { color: 'rgba(255, 255, 255, 0.1)', lineWidth: 1, priceScaleId: 'right' });
     
-    // Add Support/Resistance Lines
-    candlestickSeries.createPriceLine({
-      price: currentSymbol.resistance,
-      color: '#ef5350',
-      lineWidth: 2,
-      lineStyle: 2, // Dashed
-      axisLabelVisible: true,
-      title: 'RESISTANCE',
-    });
-    candlestickSeries.createPriceLine({
-      price: currentSymbol.support,
-      color: '#26a69a',
-      lineWidth: 2,
-      lineStyle: 2, // Dashed
-      axisLabelVisible: true,
-      title: 'SUPPORT',
-    });
-
     mainChartRef.current = mainChart;
     candlestickSeriesRef.current = candlestickSeries;
     rsiSeriesRef.current = rsiSeries;
@@ -778,7 +760,7 @@ export default function TradingDashboard() {
           </div>
           <div className="text-[10px] text-white/60 leading-tight space-y-1">
             <p>
-              {currentSymbol.label.split('/')[0]} is near {currentPrice > (currentSymbol.resistance + currentSymbol.support) / 2 ? 'resistance' : 'support'}.
+              {currentSymbol.label.split('/')[0]} Market Analysis:
               {latestData?.ema20 && latestData?.ema50 && latestData.ema20 > latestData.ema50 ? (
                 <span className="text-green-400 ml-1">BULLISH TREND</span>
               ) : (

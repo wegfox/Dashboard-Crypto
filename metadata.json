@@ -1,5 +1,5 @@
 {
-  "name": "NEAR/USDT Trading Dashboard",
-  "description": "Interactive real-time trading dashboard for NEAR/USDT with RSI, MACD, and key support/resistance levels.",
+  "name": "Trading Dashboard",
+  "description": "",
   "requestFramePermissions": []
 }
